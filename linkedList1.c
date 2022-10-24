@@ -1,20 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct Node{
+typedef struct Node{
     int id;
     struct Node *next;
-};
+} node;
 
 int main ()
 {
-    struct Node *lList = NULL;
+    node *lList = NULL;
 
     // Add 5 nodes.
-    struct Node *newNode = NULL;
+    node *newNode = NULL;
     for (int i = 0; i < 5; i++)
     {
-        newNode = (struct Node *)malloc(sizeof(struct Node));
+        newNode = (node *)malloc(sizeof(node));
         newNode->id = i;
         newNode->next = lList;
         printf("Creating node, id: %d\n", newNode->id);
@@ -22,13 +22,13 @@ int main ()
     }
 
     // Print the linked list.
-    for (struct Node *pList = lList; pList != NULL; pList = pList->next)
+    for (node *pList = lList; pList != NULL; pList = pList->next)
     {
         printf("List node id: %d\n", pList->id);
     }
 
     // Free all memory.
-    struct Node *old = lList;
+    node *old = lList;
     while (old != NULL)
     {
         lList = lList->next;
